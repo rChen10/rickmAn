@@ -35,17 +35,13 @@ class Ball {
     }
   }
 
-  void checkCollision(Ball ball) {
-    float collisionPoint = rad + ball.rad;
-    
+  boolean hasCollided(Ball ball) {
   }
 
   void react() {
-    if (state == 1) {
+    if (state == 1) 
       rad += 2;
-    }
-    if (state == 2) {
+    if (state == 2) 
       rad -= 2;
-    }
   }
 }
