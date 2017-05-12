@@ -2,7 +2,7 @@ Ball[] balls;
 boolean reactionStarted = false;
 
 void setup() {
-  size(600, 800);
+  size(600, 600);
   background(0);
   reactionStarted = false;
   balls = new Ball[25];
