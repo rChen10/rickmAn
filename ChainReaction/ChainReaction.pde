@@ -1,5 +1,5 @@
 Ball[] balls;
-boolean reactionStarted;
+boolean reactionStarted = false;
 
 void setup() {
   size(600, 800);
@@ -27,4 +27,8 @@ void moveBalls() {
 void draw() {
   drawBalls();
   moveBalls();
+  
+  if (mousePressed && reactionStarted == false) {
+     reactionStarted = true;
+  }
 }
