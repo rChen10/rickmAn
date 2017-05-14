@@ -38,33 +38,33 @@ class Ball {
   }
 
   void hasCollided(Ball ball) {
-    if (state == 0 && dist(x, y, ball.x, ball.y) <= rad + ball.rad) {
+    if (ball.state == 4)
+      return;
+    if (state == 0 && dist(x, y, ball.x, ball.y) <= rad) {
       //change first ball variables
       dx = dy = 0;
       state = 1; // 1 is expanding
 
       //change second ball variables
-      ball.dx = ball.dy = 0;
-      ball.state = 1;
+        ball.dx = ball.dy = 0;
+        ball.state = 1;
     }
   }
 
   void react() {
-    if (state == 1){
-       rad += 1; 
-       if (rad > 50){
-          state = 2; // 2 is shrinking 
-       }
+    if (state == 1) {
+      rad += 1; 
+      if (rad > 50) {
+        state = 2; // 2 is shrinking
+      }
     }
-    
-    if (state == 2){
-       rad = rad - 1; 
-       if (rad == 1){
-          rad = 0;
-          state = 4; // "deletes" the ball
-       }
+
+    if (state == 2) {
+      rad = rad - 1; 
+      if (rad == 1) {
+        rad = 0;
+        state = 4; // "deletes" the ball
+      }
     }
-    
   }
-  
 }

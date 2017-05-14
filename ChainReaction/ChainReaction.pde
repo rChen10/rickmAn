@@ -1,5 +1,6 @@
 Ball[] balls;
 boolean reactionStarted = false;
+PImage ending;
 
 void setup() {
   size(600, 600);
@@ -8,6 +9,7 @@ void setup() {
   balls = new Ball[25];
   for (int i = 0; i < 25; i ++)
     balls[i] = new Ball();
+  ending = loadImage("winner.jpg");
 }
 
 void drawBalls() {
@@ -35,6 +37,14 @@ void kaboom() {
   }
 }
 
+void checkWon() {
+  boolean win = true;
+  for (Ball b : balls)
+    if (b.state != 4)
+      win = false;
+  if (win == true)
+    background(ending);
+}
 void draw() {
   drawBalls();
   moveBalls();
@@ -45,6 +55,5 @@ void draw() {
   if (reactionStarted) {
     kaboom();
   }
-  
-  
+  checkWon();
 }
