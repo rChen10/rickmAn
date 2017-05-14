@@ -38,7 +38,7 @@ class Ball {
   }
 
   void hasCollided(Ball ball) {
-    if (dist(x, y, ball.x, ball.y) <= rad) {
+    if (state == 0 && dist(x, y, ball.x, ball.y) <= rad + ball.rad) {
       //change first ball variables
       dx = dy = 0;
       state = 1; // 1 is expanding
