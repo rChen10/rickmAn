@@ -25,10 +25,11 @@ void moveBalls() {
 }
 
 void kaboom() {
+  //cycle through every ball
   for (int a = 0; a < 25; a ++) {
     for (int b = a + 1; b < 25; b ++) {
-      if (balls[a].hasCollided(balls[b])) {
-      }
+      //check if the ball has collided with another
+      balls[a].hasCollided(balls[b]);
     }
   }
 }
@@ -37,13 +38,10 @@ void draw() {
   drawBalls();
   moveBalls();
 
-  /*
   if (mousePressed && reactionStarted == false) {
-   reactionStarted = true;
-   }
-   if (reactionStarted) {
-   kaboom();
-   }
-   */
-  kaboom();
+    reactionStarted = true;
+  }
+  if (reactionStarted) {
+    kaboom();
+  }
 }

@@ -2,7 +2,7 @@ class Ball {
 
   float x, y, rad, dx, dy;
   color c;
-  int state;
+  boolean shrinking;
 
   Ball() {
     float d = random(256);
@@ -12,12 +12,12 @@ class Ball {
     x = random((width - d) + d/2);
     y = random((height - d) + d/2);
 
-    rad = 10;
+    rad = 20;
 
     dx = random(10) - 5;
     dy = random(10) - 5;
 
-    state = 0;
+    shrinking = false;
   }
 
   void move() {
@@ -27,21 +27,26 @@ class Ball {
   }
 
   void bounce() {
+    //if ball reaches top or bottom of screen, bounce
     if (x <= 0 || x >= 600) {
       dx = dx * -1;
     }
+    //if ball reaches left or right of screen, bounce
     if (y <= 0 || y >= 600) {
       dy = dy * -1;
     }
   }
 
-  boolean hasCollided(Ball ball) {
+  void hasCollided(Ball ball) {
+    if (dist(x, y, ball.x, ball.y) <= rad) {
+      //change first ball variables
+      dx = dy = 0;
+
+      //change second ball variables
+      ball.dx = ball.dy = 0;
+    }
   }
 
   void react() {
-    if (state == 1) 
-      rad += 2;
-    if (state == 2) 
-      rad -= 2;
   }
 }
