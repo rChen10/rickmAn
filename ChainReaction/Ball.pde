@@ -2,7 +2,7 @@ class Ball {
 
   float x, y, rad, dx, dy;
   color c;
-  boolean shrinking;
+  int state;
 
   Ball() {
     float d = random(256);
@@ -17,7 +17,7 @@ class Ball {
     dx = random(10) - 5;
     dy = random(10) - 5;
 
-    shrinking = false;
+    state = 0; //0 is normal
   }
 
   void move() {
@@ -41,12 +41,30 @@ class Ball {
     if (dist(x, y, ball.x, ball.y) <= rad) {
       //change first ball variables
       dx = dy = 0;
+      state = 1; // 1 is expanding
 
       //change second ball variables
       ball.dx = ball.dy = 0;
+      ball.state = 1;
     }
   }
 
   void react() {
+    if (state == 1){
+       rad += 1; 
+       if (rad > 50){
+          state = 2; // 2 is shrinking 
+       }
+    }
+    
+    if (state == 2){
+       rad = rad - 1; 
+       if (rad == 1){
+          rad = 0;
+          state = 4; // "deletes" the ball
+       }
+    }
+    
   }
+  
 }

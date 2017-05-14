@@ -31,6 +31,7 @@ void kaboom() {
       //check if the ball has collided with another
       balls[a].hasCollided(balls[b]);
     }
+    balls[a].react();
   }
 }
 
